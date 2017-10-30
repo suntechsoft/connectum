@@ -4,13 +4,13 @@ namespace Platron\Connectum\services;
 
 use stdClass;
 
-abstract class BaseServiceResponse {
+abstract class BaseResponse {
     
     /** @var int */
-    protected $errorCode;
+    public $failure_type;
     
     /** @var string */
-    protected $errorDescription;
+    public $failure_message;
     
     public function __construct(stdClass $response) {
         foreach (get_object_vars($this) as $name => $value) {
@@ -35,18 +35,10 @@ abstract class BaseServiceResponse {
     }
     
     /**
-     * Получить код ошибки из ответа
-     * @return int
-     */
-    public function getErrorCode(){
-        return $this->errorCode;
-    }
-    
-    /**
      * Получить описание ошибки из ответа
      * @return string
      */
-    public function getErrorDescription(){
-        return $this->errorDescription;
+    public function getError(){
+        return $this->failure_message.' type '.$this->failure_type;
     }
 }

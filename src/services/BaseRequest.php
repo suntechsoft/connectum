@@ -4,7 +4,9 @@ namespace Platron\Connectum\services;
 
 use Psr\Log\LoggerInterface;
 
-abstract class BaseServiceRequest {
+abstract class BaseRequest {
+    
+    const BASE_URL = 'www.connectum.com';
     
     /** @var LoggerInterface */
     protected $logger = null;

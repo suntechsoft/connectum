@@ -4,7 +4,7 @@ namespace Platron\Connectum\services;
 
 use Platron\Connectum\clients\GetClient;
 
-abstract class BaseGetServiceRequest extends BaseServiceRequest {
+abstract class BaseGetRequest extends BaseRequest {
 	
 	/**
 	 * {@inheritdoc}

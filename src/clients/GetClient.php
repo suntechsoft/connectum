@@ -2,14 +2,14 @@
 
 namespace Platron\Connectum\clients;
 
-use Platron\Connectum\services\BaseServiceRequest;
+use Platron\Connectum\services\BaseRequest;
 
 class GetClient extends BaseClient {
     
     /**
      * {@inheritdoc}
      */
-    public function sendRequest(BaseServiceRequest $service, $logger, $connectionTimeout) {
+    public function sendRequest(BaseRequest $service, $logger, $connectionTimeout) {
         $params = $service->getParameters();
         $requestUrl = $service->getRequestUrl();
         

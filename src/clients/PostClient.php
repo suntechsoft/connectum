@@ -4,14 +4,14 @@ namespace Platron\Connectum\clients;
 
 use Platron\Connectum\clients\BaseClient;
 use Platron\Connectum\SdkException;
-use Platron\Connectum\services\BaseServiceRequest;
+use Platron\Connectum\services\BaseRequest;
 
 class PostClient implements BaseClient {
     
     /**
      * {@inheritdoc}
      */
-    public function sendRequest(BaseServiceRequest $service, $logger, $connectionTimeout) {
+    public function sendRequest(BaseRequest $service, $logger, $connectionTimeout) {
         $requestParameters = $service->getParameters();
         $requestUrl = $service->getRequestUrl();
         

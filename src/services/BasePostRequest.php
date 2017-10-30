@@ -4,7 +4,7 @@ namespace Platron\Connectum\services;
 
 use Platron\Connectum\clients\PostClient;
 
-abstract class BasePostServiceRequest extends BaseServiceRequest {
+abstract class BasePostRequest extends BaseRequest {
 	
     /**
 	 * {@inheritdoc}

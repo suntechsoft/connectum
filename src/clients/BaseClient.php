@@ -2,7 +2,7 @@
 
 namespace Platron\Connectum\clients;
 
-use Platron\Connectum\services\BaseServiceRequest;
+use Platron\Connectum\services\BaseRequest;
 use Psr\Log\LoggerInterface;
 
 abstract class BaseClient {
@@ -22,11 +22,11 @@ abstract class BaseClient {
     
     /**
      * Послать запрос
-     * @param BaseServiceRequest $service
+     * @param BaseRequest $service
      * @param LoggerInterface $logger
      * @param int $connectionTimeout
      */
-    abstract public function sendRequest(BaseServiceRequest $service, $logger, $connectionTimeout);
+    abstract public function sendRequest(BaseRequest $service, $logger, $connectionTimeout);
     
     /**
      * @param string $login
