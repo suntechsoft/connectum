@@ -10,7 +10,7 @@ use Platron\Connectum\data_objects\LocationData;
 use Platron\Connectum\data_objects\Secure3dData;
 use stdClass;
 
-class GetOrderInfoResponse extends BaseResponse {
+class OrderInfoResponse extends BaseResponse {
     
     public $amount;
     public $amount_charged;
