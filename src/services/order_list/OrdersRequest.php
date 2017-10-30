@@ -12,4 +12,8 @@ class OrdersRequest extends BaseGetRequest {
     public function getRequestUrl() {
         return self::BASE_URL.'/orders/';
     }
+
+    public function __construct() {
+        
+    }
 }
