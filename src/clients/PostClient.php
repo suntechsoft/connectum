@@ -37,8 +37,9 @@ class PostClient implements BaseClient {
 			throw new SdkException(curl_error($curl), curl_errno($curl));
 		}
 
-        if (curl_getinfo($curl, CURLINFO_HTTP_CODE) !== self::OK_HTTP_CODE) {
-            throw new SdkException('Service error. Wrong http code '.curl_getinfo($curl, CURLINFO_HTTP_CODE));
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($httpCode !== self::OK_HTTP_CODE && $httpCode !== self::REDIRECT_HTTP_CODE) {
+            throw new SdkException('Service error. Wrong http code '.$httpCode);
         }
         
         $decodedResponse = json_decode($response);

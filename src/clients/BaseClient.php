@@ -8,6 +8,8 @@ use Psr\Log\LoggerInterface;
 abstract class BaseClient {
     
     const OK_HTTP_CODE = 200;
+    const REDIRECT_HTTP_CODE = 201;
+    
     const LOG_LEVEL = 0;
     
     /** @var string */
