@@ -2,6 +2,7 @@
 
 namespace Platron\Connectum\services;
 
+use Platron\Connectum\data_objects\BaseDataObject;
 use Psr\Log\LoggerInterface;
 
 abstract class BaseRequest {
@@ -32,10 +33,13 @@ abstract class BaseRequest {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
 			if ($value) {
-				$filledvars[$name] = (string)$value;
+                if($value instanceof BaseDataObject){
+                    $filledvars[$name] = $value->getParameters();
+                } else {
+                    $filledvars[$name] = $value;
+                }
 			}
 		}
-
 		return $filledvars;
 	}
     

@@ -8,6 +8,8 @@ class OrderInfoRequest extends BaseGetRequest {
     
     /** @var int */
     protected $id;
+    /** @var array */
+    protected $expands = [];
     
     /**
      * {@inheritdoc}
@@ -21,5 +23,22 @@ class OrderInfoRequest extends BaseGetRequest {
      */
     public function __construct($id){
         $this->id = $id;
+    }
+    
+    /**
+     * Set expands
+     * @param array $expands
+     */
+    public function setExpands($expands){
+        $this->expands = $expands;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getParameters() {
+        $params = parent::getParameters();
+        $params['expands'] = implode(',',$this->expands);
+        return $params;
     }
 }

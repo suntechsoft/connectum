@@ -11,7 +11,11 @@ abstract class BaseDataObject {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
 			if ($value) {
-				$filledvars[$name] = $value;
+                if($value instanceof BaseDataObject){
+                    $filledvars[$name] = $value->getParameters();
+                } else {
+                    $filledvars[$name] = $value;
+                }
 			}
 		}
 
