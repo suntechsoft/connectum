@@ -2,8 +2,10 @@
 
 namespace Platron\Connectum\services\order_credit;
 
-use Platron\Connectum\services\BasePostRequest;
+use Platron\Connectum\data_objects\DynamicDescriptorData;
 use Platron\Connectum\data_objects\LocationData;
+use Platron\Connectum\data_objects\OptionsData;
+use Platron\Connectum\services\BasePostRequest;
 
 class OrderCreditRequest extends BasePostRequest {
     /** @var int */
@@ -16,6 +18,8 @@ class OrderCreditRequest extends BasePostRequest {
     protected $location;
     /** @var OptionsData */
     protected $options;
+    /** @var DynamicDescriptorData */
+    protected $dynamic_descritor;
     
     /**
      * {@inheritdoc}
@@ -40,10 +44,20 @@ class OrderCreditRequest extends BasePostRequest {
     /**
      * Set options
      * @param OptionsData $options
-     * @return $this
+     * @return self
      */
     public function setOptions(OptionsData $options){
         $this->options = $options;
+        return $this;
+    }
+    
+    /**
+     * Set Dynamic descriptor
+     * @param DynamicDescriptorData $dynamicDescriptor
+     * @return self
+     */
+    public function setDynamicDescriptor(DynamicDescriptorData $dynamicDescriptor){
+        $this->dynamic_descritor = $dynamicDescriptor;
         return $this;
     }
 }
