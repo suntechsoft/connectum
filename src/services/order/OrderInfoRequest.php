@@ -30,15 +30,6 @@ class OrderInfoRequest extends BaseGetRequest {
      * @param array $expands
      */
     public function setExpands($expands){
-        $this->expands = $expands;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function getParameters() {
-        $params = parent::getParameters();
-        $params['expands'] = implode(',',$this->expands);
-        return $params;
+        $this->expands = implode(',', $this->$expands);
     }
 }

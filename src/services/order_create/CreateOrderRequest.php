@@ -3,6 +3,7 @@
 namespace Platron\Connectum\services\order_create;
 
 use Platron\Connectum\data_objects\ClientData;
+use Platron\Connectum\data_objects\LocationData;
 use Platron\Connectum\services\BasePostRequest;
 
 class CreateOrderRequest extends BasePostRequest {
@@ -19,8 +20,8 @@ class CreateOrderRequest extends BasePostRequest {
     protected $custom_fields;
     /** @var ClientData */
     protected $client;
-    /** @var string */
-    protected $ip;
+    /** @var LocationData */
+    protected $location;
     /** @var string */
     protected $expiration_timeout;
     /** @var boolean */
@@ -91,12 +92,12 @@ class CreateOrderRequest extends BasePostRequest {
     }
     
     /**
-     * Set ip
-     * @param string $ip
+     * Set location
+     * @param LocationData $location
      * @return self
      */
-    public function setIp($ip){
-        $this->ip = $ip;
+    public function setLocation(LocationData $location){
+        $this->location = $location;
         return $this;
     }
     
