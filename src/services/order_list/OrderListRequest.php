@@ -1,6 +1,6 @@
 <?php
 
-namespace Platron\Connectum\services\orders;
+namespace Platron\Connectum\services\order_list;
 
 use DateTime;
 use Platron\Connectum\data_objects\CardData;

@@ -35,6 +35,9 @@ class OrderAuthorizeRequest extends BasePostRequest {
     /** @var string */
     protected $terminal;
     
+    /**
+     * {@inheritdoc}
+     */
     public function getRequestUrl() {
         return self::BASE_URL.'/orders/authorize';
     }
