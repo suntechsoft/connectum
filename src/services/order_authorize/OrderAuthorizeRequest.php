@@ -1,54 +1,72 @@
 <?php
 
-namespace Platron\Connectum\services\order_create;
+namespace Platron\Connectum\services\order_authorize;
 
-use Platron\Connectum\data_objects\ClientData;
+use Platron\Connectum\data_objects\CardData;
 use Platron\Connectum\data_objects\LocationData;
 use Platron\Connectum\services\BasePostRequest;
 
-class CreateOrderRequest extends BasePostRequest {
+class OrderAuthorizeRequest extends BasePostRequest {
     
     /** @var float */
     protected $amount;
     /** @var string */
     protected $currency;
     /** @var string */
+    protected $pan;
+    /** @var CardData */
+    protected $card;
+    /** @var LocationData */
+    protected $location;
+    /** @var string */
     protected $merchant_order_id;
     /** @var int */
     protected $segment;
+    /** @var string */
+    protected $description;
     /** @var array */
     protected $custom_fields;
     /** @var ClientData */
     protected $client;
-    /** @var LocationData */
-    protected $location;
-    /** @var string */
-    protected $expiration_timeout;
     /** @var boolean */
     protected $force3ds;
     /** @var boolean */
     protected $auto_charge;
     /** @var string */
-    protected $language;
-    /** @var string */
-    protected $return_url;
-    /** @var string */
     protected $terminal;
     
-    /**
-     * {@inheritdoc}
-     */
     public function getRequestUrl() {
-        return self::BASE_URL.'/orders/create';
+        return self::BASE_URL.'/orders/authorize';
     }
-
+    
     /**
      * @param float $amount
      * @param string $currency
      */
-    public function __construct($amount, $currency) {
+    public function __construct($amount, $currency, $pan) {
         $this->amount = (string)$amount;
         $this->currency = $currency;
+        $this->pan = $pan;
+    }
+    
+    /**
+     * Set card | Required
+     * @param CardData $card
+     * @return $this
+     */
+    public function setCard(CardData $card){
+        $this->card = $card;
+        return $this;
+    }
+    
+    /**
+     * Set location | Required
+     * @param LocationData $location
+     * @return $this
+     */
+    public function setLocation(LocationData $location){
+        $this->location = $location;
+        return $this;
     }
     
     /**
@@ -68,6 +86,16 @@ class CreateOrderRequest extends BasePostRequest {
      */
     public function setSegment($segment){
         $this->segment = $segment;
+        return $this;
+    }
+    
+    /**
+     * Set description
+     * @param string $description
+     * @return self
+     */
+    public function setDescription($description){
+        $this->description = $description;
         return $this;
     }
     
@@ -92,26 +120,6 @@ class CreateOrderRequest extends BasePostRequest {
     }
     
     /**
-     * Set location
-     * @param LocationData $location
-     * @return self
-     */
-    public function setLocation(LocationData $location){
-        $this->location = $location;
-        return $this;
-    }
-    
-    /**
-     * Set expire timeout
-     * @param string $expireTimeout
-     * @return self
-     */
-    public function setExpirationTimeout($expireTimeout){
-        $this->expiration_timeout = $expireTimeout;
-        return $this;
-    }
-    
-    /**
      * Set force 3ds
      * @return self
      */
@@ -130,36 +138,6 @@ class CreateOrderRequest extends BasePostRequest {
     }
     
     /**
-     * Set language
-     * @param string $language
-     * @return self
-     */
-    public function setLanguage($language){
-        $this->language = $language;
-        return $this;
-    }
-    
-    /**
-     * Set return url
-     * @param string $returnUrl
-     * @return self
-     */
-    public function setReturnUrl($returnUrl){
-        $this->return_url = $returnUrl;
-        return $this;
-    }
-    
-    /**
-     * Set template (mobile)
-     * @param string $template
-     * @return self
-     */
-    public function setTemplate($template){
-        $this->return_url = $template;
-        return $this;
-    }
-    
-    /**
      * Set terminal
      * @param string $terminal
      * @return self
@@ -168,4 +146,5 @@ class CreateOrderRequest extends BasePostRequest {
         $this->terminal = $terminal;
         return $this;
     }
+    
 }

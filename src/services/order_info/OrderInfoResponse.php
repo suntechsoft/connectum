@@ -1,6 +1,6 @@
 <?php
 
-namespace Platron\Connectum\services\order;
+namespace Platron\Connectum\services\order_info;
 
 use Platron\Connectum\services\BaseResponse;
 use Platron\Connectum\data_objects\CardData;

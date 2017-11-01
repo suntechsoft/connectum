@@ -9,7 +9,7 @@ use Platron\Connectum\data_objects\IssuerData;
 use Platron\Connectum\data_objects\LocationData;
 use Platron\Connectum\services\BaseGetRequest;
 
-class OrdersRequest extends BaseGetRequest {
+class OrderListRequest extends BaseGetRequest {
     
     /** @var array */
     protected $expands;

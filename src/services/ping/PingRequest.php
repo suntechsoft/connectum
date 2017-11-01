@@ -1,6 +1,6 @@
 <?php
 
-namespace Platron\Connectum\services\test;
+namespace Platron\Connectum\services\ping;
 
 use Platron\Connectum\services\BaseGetRequest;
 
