@@ -5,10 +5,11 @@ namespace Platron\Connectum\services\order_create;
 use Platron\Connectum\data_objects\ClientData;
 use Platron\Connectum\data_objects\LocationData;
 use Platron\Connectum\services\BasePostRequest;
+use Platron\Connectum\data_objects\OptionsData;
 
 class OrderCreateRequest extends BasePostRequest {
     
-    /** @var float */
+    /** @var string */
     protected $amount;
     /** @var string */
     protected $currency;
@@ -22,18 +23,8 @@ class OrderCreateRequest extends BasePostRequest {
     protected $client;
     /** @var LocationData */
     protected $location;
-    /** @var string */
-    protected $expiration_timeout;
-    /** @var boolean */
-    protected $force3ds;
-    /** @var boolean */
-    protected $auto_charge;
-    /** @var string */
-    protected $language;
-    /** @var string */
-    protected $return_url;
-    /** @var string */
-    protected $terminal;
+    /** @var OptionsData */
+    protected $options;
     
     /**
      * {@inheritdoc}
@@ -102,70 +93,12 @@ class OrderCreateRequest extends BasePostRequest {
     }
     
     /**
-     * Set expire timeout
-     * @param string $expireTimeout
-     * @return self
+     * Set options
+     * @param OptionsData $options
+     * @return $this
      */
-    public function setExpirationTimeout($expireTimeout){
-        $this->expiration_timeout = $expireTimeout;
-        return $this;
-    }
-    
-    /**
-     * Set force 3ds
-     * @return self
-     */
-    public function setForce3ds(){
-        $this->force3ds = true;
-        return $this;
-    }
-    
-    /**
-     * Set auto capture
-     * @return self
-     */
-    public function setAutoCharge(){
-        $this->auto_charge = true;
-        return $this;
-    }
-    
-    /**
-     * Set language
-     * @param string $language
-     * @return self
-     */
-    public function setLanguage($language){
-        $this->language = $language;
-        return $this;
-    }
-    
-    /**
-     * Set return url
-     * @param string $returnUrl
-     * @return self
-     */
-    public function setReturnUrl($returnUrl){
-        $this->return_url = $returnUrl;
-        return $this;
-    }
-    
-    /**
-     * Set template (mobile)
-     * @param string $template
-     * @return self
-     */
-    public function setTemplate($template){
-        $this->return_url = $template;
-        return $this;
-    }
-    
-    /**
-     * Set terminal
-     * @param string $terminal
-     * @return self
-     */
-    public function setTerminal($terminal){
-        $this->terminal = $terminal;
+    public function setOptions(OptionsData $options){
+        $this->options = $options;
         return $this;
     }
 }
