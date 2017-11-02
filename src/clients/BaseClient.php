@@ -3,6 +3,7 @@
 namespace Platron\Connectum\clients;
 
 use Platron\Connectum\services\BaseRequest;
+use stdClass;
 use Psr\Log\LoggerInterface;
 
 abstract class BaseClient {
@@ -23,14 +24,17 @@ abstract class BaseClient {
     protected $password;
     /** @var string */
     protected $baseUrl = 'https://api.connectum.eu';
+    /** @var LoggerInterface */
+    protected $logger;
+    /** @var int */
+    protected $connectionTimeout;
     
     /**
-     * Послать запрос
+     * Send request
      * @param BaseRequest $service
-     * @param LoggerInterface $logger
-     * @param int $connectionTimeout
+     * @return stdClass
      */
-    abstract public function sendRequest(BaseRequest $service, $logger, $connectionTimeout);
+    abstract public function sendRequest(BaseRequest $service);
     
     /**
      * @param string $login
@@ -42,7 +46,7 @@ abstract class BaseClient {
     }
     
     /**
-     * Получить массив хедеров
+     * Get headers
      * @return array
      */
     public function getHeaders(){
@@ -53,9 +57,31 @@ abstract class BaseClient {
     }
     
     /**
-     * Установить тестовый режим
+     * Set test mode
+     * @return self
      */
     public function setTest(){
         $this->baseUrl = 'https://api.sandbox.connectum.eu';
+        return $this;
+    }
+    
+    /**
+     * Set connection timeout
+     * @param type $connectionTimeout
+     * @return self
+     */
+    public function setConnectionTimeout($connectionTimeout){
+        $this->connectionTimeout = $connectionTimeout;
+        return $this;
+    }
+    
+    /**
+     * Set log
+     * @param LoggerInterface $logger
+     * @return self
+     */
+    public function setLogger(LoggerInterface $logger){
+        $this->logger = $logger;
+        return $this;
     }
 }

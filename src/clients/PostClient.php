@@ -5,20 +5,25 @@ namespace Platron\Connectum\clients;
 use Platron\Connectum\clients\BaseClient;
 use Platron\Connectum\SdkException;
 use Platron\Connectum\services\BasePostRequest;
+use Platron\Connectum\services\BaseRequest;
 
 class PostClient implements BaseClient {
     
     /**
-     * {@inheritdoc}
+     * @param BasePostRequest $service
      */
-    public function sendRequest(BasePostRequest $service, $logger, $connectionTimeout) {
+    public function sendRequest(BaseRequest $service) {
+        if(!$service instanceof BasePostRequest){
+            throw new SdkException('Service wait post service');
+        }
+        
         $requestParameters = $service->getParameters();
         $requestUrl = $this->baseUrl.$service->getRequestUrl();
         
-        $curl = curl_init($service->getRequestUrl());
+        $curl = curl_init($requestUrl);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $connectionTimeout);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectionTimeout);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->getHeaders());
         
         if(!empty($requestParameters)){
@@ -28,7 +33,7 @@ class PostClient implements BaseClient {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($curl);
         
-        if($logger){
+        if($this->logger){
             $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl.' params '. json_encode($requestParameters));
             $this->logger->log(self::LOG_LEVEL, 'Response '.$response);
         }
