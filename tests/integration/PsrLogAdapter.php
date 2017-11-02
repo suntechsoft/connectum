@@ -44,10 +44,10 @@ class PsrLogAdapter implements LoggerInterface {
     
     protected function writeAll($message, $context){
         if(!empty($context)){
-            file_put_contents('/tests/logs/'.date("Y-m-d").'.txt', $message.print_r($context, true), FILE_APPEND);
+            file_put_contents('tests/logs/'.date("Y-m-d").'.txt', $message.print_r($context, true), FILE_APPEND);
         }
         else {
-            file_put_contents('/tests/logs/'.date("Y-m-d").'.txt', $message, FILE_APPEND);
+            file_put_contents('tests/logs/'.date("Y-m-d").'.txt', $message, FILE_APPEND);
         }
     }
 

@@ -5,10 +5,13 @@ namespace Platron\Connectum\tests\integration;
 use Platron\Connectum\tests\integration\MerchantSettings;
 
 class IntegrationTestBase extends \PHPUnit_Framework_TestCase {
-    
+    /** @var string */
     public $testingUrl;
+    /** @var string */
     public $login;
+    /** @var string */
     public $password;
+    /** @var PsrLogAdapter */
     public $logger;
     
     public function __construct() {
