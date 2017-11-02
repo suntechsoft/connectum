@@ -1,6 +1,6 @@
 <?php
 
-namespace Platron\Atol;
+namespace Platron\Connectum;
 
 class SdkException extends \Exception {
     

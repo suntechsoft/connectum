@@ -25,7 +25,7 @@ class OrderCreditRequest extends BasePostRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return $this->getBaseUrl().'/orders/'.$this->id.'/credit';
+        return '/orders/'.$this->id.'/credit';
     }
 
     /**

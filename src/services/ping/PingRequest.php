@@ -10,6 +10,6 @@ class PingRequest extends BaseGetRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return $this->getBaseUrl().'/ping';
+        return '/ping';
     }
 }

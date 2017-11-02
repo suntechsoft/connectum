@@ -15,7 +15,7 @@ class OrderCancelRequest extends BasePostRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return $this->getBaseUrl().'/orders/'.$this->id.'/cancel';
+        return '/orders/'.$this->id.'/cancel';
     }
     
     /**

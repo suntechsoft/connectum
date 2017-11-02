@@ -13,7 +13,7 @@ class OrderReverseRequest extends BasePutRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return $this->getBaseUrl().'/orders/'.$this->id.'/reverse';
+        return '/orders/'.$this->id.'/reverse';
     }
 
     /**

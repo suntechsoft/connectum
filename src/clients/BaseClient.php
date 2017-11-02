@@ -21,6 +21,8 @@ abstract class BaseClient {
     protected $login;
     /** @var string */
     protected $password;
+    /** @var string */
+    protected $baseUrl = 'https://api.connectum.eu';
     
     /**
      * Послать запрос
@@ -48,5 +50,12 @@ abstract class BaseClient {
             'Authorization: '.$this->login.' '.$this->password,
             'Content-Type: application/json',
         );
+    }
+    
+    /**
+     * Установить тестовый режим
+     */
+    public function setTest(){
+        $this->baseUrl = 'https://api.sandbox.connectum.eu';
     }
 }

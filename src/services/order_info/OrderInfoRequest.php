@@ -15,7 +15,7 @@ class OrderInfoRequest extends BaseGetRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return $this->getBaseUrl().'/orders/'.$this->id;
+        return '/orders/'.$this->id;
     }
 
     /**

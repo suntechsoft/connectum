@@ -2,16 +2,17 @@
 
 namespace Platron\Connectum\clients;
 
-use Platron\Connectum\services\BaseRequest;
+use Platron\Connectum\SdkException;
+use Platron\Connectum\services\BaseGetRequest;
 
 class GetClient extends BaseClient {
     
     /**
      * {@inheritdoc}
      */
-    public function sendRequest(BaseRequest $service, $logger, $connectionTimeout) {
+    public function sendRequest(BaseGetRequest $service, $logger, $connectionTimeout) {
         $params = $service->getParameters();
-        $requestUrl = $service->getRequestUrl();
+        $requestUrl = $this->baseUrl.$service->getRequestUrl();
         
         $curl = curl_init($service->getRequestUrl().'?'.http_build_query($params));
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
@@ -34,7 +35,7 @@ class GetClient extends BaseClient {
         if (curl_getinfo($curl, CURLINFO_HTTP_CODE) !== self::OK_HTTP_CODE) {
             throw new SdkException('Service error. Wrong http code '.curl_getinfo($curl, CURLINFO_HTTP_CODE));
         }
-        
+
         $decodedResponse = json_decode($response);
         if(empty($decodedResponse)){
             throw new SdkException('Service error. Empty response or not json response');

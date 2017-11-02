@@ -15,7 +15,7 @@ class OrderRefundRequest extends BasePutRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return $this->getBaseUrl().'/orders/'.$this->id.'/refund';
+        return '/orders/'.$this->id.'/refund';
     }
     
     /**

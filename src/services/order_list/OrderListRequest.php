@@ -34,7 +34,7 @@ class OrderListRequest extends BaseGetRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return $this->getBaseUrl().'/orders/';
+        return '/orders/';
     }
 
     /**
