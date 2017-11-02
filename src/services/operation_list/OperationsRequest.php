@@ -21,7 +21,7 @@ class OperationsRequest extends BaseGetRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return self::BASE_URL.'/operations/';
+        return $this->getBaseUrl().'/operations/';
     }
 
     /**

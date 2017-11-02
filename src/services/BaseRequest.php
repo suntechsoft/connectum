@@ -13,6 +13,8 @@ abstract class BaseRequest {
     protected $logger = null;
     /** @var integer */
     protected $timeout = 30;
+    /** @var string */
+    protected $baseUrl = 'www.connectum.com';    
     
     /**
      * Отправить запрос
@@ -57,5 +59,21 @@ abstract class BaseRequest {
      */
     public function setConnectionTimeout($timeout){
         $this->timeout = $timeout;
+    }
+    
+    /**
+     * Set base url
+     * @param string $url
+     */
+    public function setBaseUrl($url){
+        $this->baseUrl = $url;
+    }
+    
+    /**
+     * Get base url
+     * @return string
+     */
+    public function getBaseUrl(){
+        return $this->baseUrl;
     }
 }

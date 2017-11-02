@@ -23,7 +23,7 @@ class OrderRebillRequest extends BasePostRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return self::BASE_URL.'/orders/'.$this->id.'/rebill';
+        return $this->getBaseUrl().'/orders/'.$this->id.'/rebill';
     }
 
     /**

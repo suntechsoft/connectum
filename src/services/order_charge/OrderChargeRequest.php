@@ -15,7 +15,7 @@ class OrderChargeRequest extends BasePutRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return self::BASE_URL.'/orders/'.$this->id.'/charge';
+        return $this->getBaseUrl().'/orders/'.$this->id.'/charge';
     }
     
     /**

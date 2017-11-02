@@ -40,7 +40,7 @@ class OrderAuthorizeRequest extends BasePostRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return self::BASE_URL.'/orders/authorize';
+        return $this->getBaseUrl().'/orders/authorize';
     }
     
     /**

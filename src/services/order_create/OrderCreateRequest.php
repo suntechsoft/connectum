@@ -33,7 +33,7 @@ class OrderCreateRequest extends BasePostRequest {
      * {@inheritdoc}
      */
     public function getRequestUrl() {
-        return self::BASE_URL.'/orders/create';
+        return $this->getBaseUrl().'/orders/create';
     }
 
     /**
