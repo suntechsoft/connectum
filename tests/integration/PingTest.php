@@ -8,7 +8,7 @@ use Platron\Connectum\services\ping\PingResponse;
 
 class PingTest extends IntegrationTestBase {
     public function testRequest(){
-        $client = (new GetClient($this->login, $this->password))->setTest();
+        $client = (new GetClient($this->login, $this->password))->setTest()->setLogger($this->logger);
         $this->assertTrue(new PingResponse($client->sendRequest(new PingRequest())));
     }
 }
