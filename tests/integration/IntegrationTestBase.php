@@ -6,19 +6,26 @@ use Platron\Connectum\tests\integration\MerchantSettings;
 
 class IntegrationTestBase extends \PHPUnit_Framework_TestCase {
     /** @var string */
-    public $testingUrl;
+    protected $testingUrl;
     /** @var string */
-    public $login;
+    protected $login;
     /** @var string */
-    public $password;
+    protected $password;
+    /** @var string */
+    protected $certificatePath;
+    /** @var string */
+    protected $certificatePassword;
+    
     /** @var PsrLogAdapter */
     public $logger;
     
     public function __construct() {
+        $this->logger = new PsrLogAdapter();
         $this->testingUrl = MerchantSettings::TESTING_URL;
         $this->login = MerchantSettings::BASIC_LOGIN;
         $this->password = MerchantSettings::BASIC_PASSWORD;
-        $this->logger = new PsrLogAdapter();
+        $this->certificatePath = MerchantSettings::CERTIFICATE_PATH;
+        $this->certificatePassword = MerchantSettings::CERTIFICATE_PASSWORD;
         parent::__construct();
     }
 }

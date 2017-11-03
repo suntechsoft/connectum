@@ -28,6 +28,10 @@ abstract class BaseClient {
     protected $logger;
     /** @var int */
     protected $connectionTimeout;
+    /** @var string */
+    protected $certificatePath;
+    /** @var string */
+    protected $certificatePassword;
     
     /**
      * Send request
@@ -40,9 +44,11 @@ abstract class BaseClient {
      * @param string $login
      * @param string $password
      */
-    public function __construct($login, $password) {
+    public function __construct($login, $password, $certificatePath, $certificatePassword) {
         $this->login = $login;
         $this->password = $password;
+        $this->certificatePath = $certificatePath;
+        $this->certificatePassword = $certificatePassword;
     }
     
     /**
