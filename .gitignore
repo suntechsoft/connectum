@@ -15,3 +15,6 @@ composer.phar
 
 # Test logs
 /tests/logs/
+
+# Merchant certificate
+/tests/integration/certificate
