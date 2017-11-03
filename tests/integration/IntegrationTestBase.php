@@ -24,7 +24,7 @@ class IntegrationTestBase extends \PHPUnit_Framework_TestCase {
         $this->testingUrl = MerchantSettings::TESTING_URL;
         $this->login = MerchantSettings::BASIC_LOGIN;
         $this->password = MerchantSettings::BASIC_PASSWORD;
-        $this->certificatePath = MerchantSettings::CERTIFICATE_PATH;
+        $this->certificatePath = __DIR__.'/certificate/'.MerchantSettings::CERTIFICATE_NAME;
         $this->certificatePassword = MerchantSettings::CERTIFICATE_PASSWORD;
         parent::__construct();
     }
