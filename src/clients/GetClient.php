@@ -27,6 +27,8 @@ class GetClient extends BaseClient {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectionTimeout);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->getHeaders());
+        curl_setopt($curl, CURLOPT_SSLCERT, $this->certificatePath);
+        curl_setopt($curl, CURLOPT_SSLCERTPASSWD, $this->certificatePassword);
 
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($curl);

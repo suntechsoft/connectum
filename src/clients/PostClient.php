@@ -2,12 +2,11 @@
 
 namespace Platron\Connectum\clients;
 
-use Platron\Connectum\clients\BaseClient;
 use Platron\Connectum\SdkException;
 use Platron\Connectum\services\BasePostRequest;
 use Platron\Connectum\services\BaseRequest;
 
-class PostClient implements BaseClient {
+class PostClient extends BaseClient {
     
     /**
      * @param BasePostRequest $service
@@ -25,6 +24,8 @@ class PostClient implements BaseClient {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectionTimeout);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->getHeaders());
+        curl_setopt($curl, CURLOPT_SSLCERT, $this->certificatePath);
+        curl_setopt($curl, CURLOPT_SSLCERTPASSWD, $this->certificatePassword);
         
         if(!empty($requestParameters)){
             curl_setopt($curl, CURLOPT_POST, 1);

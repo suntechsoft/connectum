@@ -43,6 +43,8 @@ abstract class BaseClient {
     /**
      * @param string $login
      * @param string $password
+     * @param string $certificatePath PEM certificate
+     * @param string $certificatePassword
      */
     public function __construct($login, $password, $certificatePath, $certificatePassword) {
         $this->login = $login;
