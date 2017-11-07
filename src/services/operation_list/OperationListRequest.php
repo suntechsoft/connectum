@@ -2,6 +2,9 @@
 
 namespace Platron\Connectum\services\operation_list;
 
+use DateTime;
+use Platron\Connectum\handbooks\OperationStatus;
+use Platron\Connectum\SdkException;
 use Platron\Connectum\services\BaseGetRequest;
 
 class OperationListRequest extends BaseGetRequest {
@@ -40,6 +43,10 @@ class OperationListRequest extends BaseGetRequest {
      * @return $this
      */
     public function setStatus($status) {
+        if(!in_array($status, OperationStatus::getAllStatuses())){
+            throw new SdkException('Wrong status. Use from constants');
+        }
+        
         $this->status = $status;
         return $this;
     }
@@ -66,11 +73,11 @@ class OperationListRequest extends BaseGetRequest {
     
     /**
      * Set types filter
-     * @param array $types
+     * @param string $type
      * @return $this
      */
-    public function setTypes($types){
-        $this->types = implode(',',$types);
+    public function setType($type){
+        $this->type = $type;
         return $this;
     }
 }

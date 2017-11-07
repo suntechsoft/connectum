@@ -11,7 +11,7 @@ class Expands {
         SECURE3D = 'sucure3d',
         OPERATIONS_CASHFLOW = 'operations.cashflow';
     
-    public function getAllExpands(){
+    public static function getAllExpands(){
         return array(
             self::CARD,
             self::CLIENT,

@@ -8,7 +8,7 @@ class OperationStatus {
         FAILURE = 'failure',
         ERROR = 'error';
     
-    public function getAllStatuses(){
+    public static function getAllStatuses(){
         return array(
             self::SUCCESS,
             self::FAILURE,

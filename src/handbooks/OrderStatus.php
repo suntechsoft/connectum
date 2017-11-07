@@ -17,7 +17,7 @@ class OrderStatus {
         CREDITED = 'credited',
         ERROR = 'error';
     
-    public function getAllStatuses(){
+    public static function getAllStatuses(){
         return array(
             self::NEW_STATUS,
             self::PREPARED,
