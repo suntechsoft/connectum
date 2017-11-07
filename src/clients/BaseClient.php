@@ -59,7 +59,6 @@ abstract class BaseClient {
      */
     public function getHeaders(){
         return array(
-            'Authorization: '.$this->login.' '.$this->password,
             'Content-Type: application/json',
         );
     }
