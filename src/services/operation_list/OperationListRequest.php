@@ -4,7 +4,7 @@ namespace Platron\Connectum\services\operation_list;
 
 use Platron\Connectum\services\BaseGetRequest;
 
-class OperationsRequest extends BaseGetRequest {
+class OperationListRequest extends BaseGetRequest {
     
     /** @var array */
     protected $expands;

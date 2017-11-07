@@ -5,7 +5,7 @@ namespace Platron\Connectum\services\operation_list;
 use Platron\Connectum\services\BaseResponse;
 use Platron\Connectum\data_objects\CashflowData;
 
-class OperationsResponse extends BaseResponse {
+class OperationListResponse extends BaseResponse {
     public $amount;
     public $auth_code;
     public $created;
