@@ -46,31 +46,15 @@ class OrderAuthorizeRequest extends BasePostRequest {
     /**
      * @param float $amount
      * @param string $currency
+     * @param CardData $card
+     * @param LocationData $location
      */
-    public function __construct($amount, $currency, $pan) {
+    public function __construct($amount, $currency, $pan, CardData $card, LocationData $location) {
         $this->amount = (string)$amount;
         $this->currency = $currency;
         $this->pan = $pan;
-    }
-    
-    /**
-     * Set card | Required
-     * @param CardData $card
-     * @return $this
-     */
-    public function setCard(CardData $card){
         $this->card = $card;
-        return $this;
-    }
-    
-    /**
-     * Set location | Required
-     * @param LocationData $location
-     * @return $this
-     */
-    public function setLocation(LocationData $location){
         $this->location = $location;
-        return $this;
     }
     
     /**

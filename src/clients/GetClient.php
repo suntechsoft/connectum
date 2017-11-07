@@ -19,7 +19,7 @@ class GetClient extends BaseClient {
         $params = $service->getParameters();
         $requestUrl = $this->baseUrl.$service->getRequestUrl();
         if(!empty($params)){
-            $requestUrl .= $requestUrl.'?'.http_build_query($params);
+            $requestUrl = $requestUrl.'?'.http_build_query($params);
         }
         
         $curl = curl_init($requestUrl);
