@@ -7,12 +7,15 @@ use Platron\Connectum\data_objects\CardData;
 use Platron\Connectum\data_objects\ClientData;
 use Platron\Connectum\data_objects\IssuerData;
 use Platron\Connectum\data_objects\LocationData;
+use Platron\Connectum\handbooks\Expands;
+use Platron\Connectum\handbooks\OrderStatus;
+use Platron\Connectum\SdkException;
 use Platron\Connectum\services\BaseGetRequest;
 
 class OrderListRequest extends BaseGetRequest {
     
-    /** @var array */
-    protected $expands;
+    /** @var string */
+    protected $expand;
     /** @var string */
     protected $status;
     /** @var string */
@@ -38,12 +41,16 @@ class OrderListRequest extends BaseGetRequest {
     }
 
     /**
-     * Set expands
-     * @param array $expands
+     * Set expand
+     * @param string $expand
      * @return $this
      */
-    public function setExpands($expands) {
-        $this->expands = implode(',', $expands);
+    public function setExpand($expand) {
+        if(!in_array($expand, Expands::getAllExpands())){
+            throw new SdkException('Wrong expand. Use from constants');
+        }
+        
+        $this->expand = $expand;
         return $this;
     }
     
@@ -53,6 +60,10 @@ class OrderListRequest extends BaseGetRequest {
      * @return $this
      */
     public function setStatus($status) {
+        if(!in_array($status, OrderStatus::getAllStatuses())){
+            throw new SdkException('Wrong status. Use from constants');
+        }
+        
         $this->status = $status;
         return $this;
     }

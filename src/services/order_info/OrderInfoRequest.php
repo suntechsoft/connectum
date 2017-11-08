@@ -2,14 +2,16 @@
 
 namespace Platron\Connectum\services\order_info;
 
+use Platron\Connectum\handbooks\Expands;
+use Platron\Connectum\SdkException;
 use Platron\Connectum\services\BaseGetRequest;
 
 class OrderInfoRequest extends BaseGetRequest {
     
     /** @var int */
     protected $id;
-    /** @var array */
-    protected $expands = [];
+    /** @var string */
+    protected $expand;
     
     /**
      * {@inheritdoc}
@@ -26,10 +28,13 @@ class OrderInfoRequest extends BaseGetRequest {
     }
     
     /**
-     * Set expands
-     * @param array $expands
+     * Set expand
+     * @param string $expand
      */
-    public function setExpands($expands){
-        $this->expands = implode(',', $this->$expands);
+    public function setExpands($expand){
+        if(!in_array($expand, Expands::getAllExpands())){
+            throw new SdkException('Wrong expand. Use from constants');
+        }
+        $this->expand = $expand;
     }
 }

@@ -3,14 +3,16 @@
 namespace Platron\Connectum\services\operation_list;
 
 use DateTime;
+use Platron\Connectum\handbooks\Expands;
 use Platron\Connectum\handbooks\OperationStatus;
+use Platron\Connectum\handbooks\OperationTypes;
 use Platron\Connectum\SdkException;
 use Platron\Connectum\services\BaseGetRequest;
 
 class OperationListRequest extends BaseGetRequest {
     
     /** @var array */
-    protected $expands;
+    protected $expand;
     /** @var string */
     protected $status;
     /** @var string */
@@ -29,11 +31,15 @@ class OperationListRequest extends BaseGetRequest {
 
     /**
      * Set expands
-     * @param array $expands
+     * @param string $expand
      * @return $this
      */
-    public function setExpands($expands) {
-        $this->expands = $expands;
+    public function setExpands($expand) {
+        if(!in_array($expand, Expands::getAllExpands())){
+            throw new SdkException('Wrong expand. Use from constants');
+        }
+        
+        $this->expand = $expand;
         return $this;
     }
     
@@ -77,6 +83,10 @@ class OperationListRequest extends BaseGetRequest {
      * @return $this
      */
     public function setType($type){
+        if(!in_array($type, OperationTypes::getTypes())){
+            throw new SdkException('Wrong type. Use from constants');
+        }
+        
         $this->type = $type;
         return $this;
     }
