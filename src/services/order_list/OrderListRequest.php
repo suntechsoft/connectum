@@ -137,4 +137,35 @@ class OrderListRequest extends BaseGetRequest {
         $this->location = $location;
         return $this;
     }
+    
+    /**
+     * Переопределено по причине точки в ключе массива
+     * {@inheritdoc}
+     */
+    public function getParameters() {
+        $parameters = parent::getParameters();
+        $parameters['card.type'] = $this->card->type;
+        $parameters['card.subtype'] = $this->card->subtype;
+        $parameters['location.ip'] = $this->location->ip;
+        $parameters['client.name'] = $this->client->name;
+        $parameters['client.email'] = $this->client->email;
+        $parameters['issuer.country'] = $this->issuer->country;
+        $parameters['issuer.bin'] = $this->issuer->bin;
+        $parameters['issuer.title'] = $this->issuer->title;
+        
+        if($this->card){
+            unset($parameters['card']);
+        }
+        if($this->location){
+            unset($parameters['location']);
+        }
+        if($this->client){
+            unset($parameters['client']);
+        }
+        if($this->issuer){
+            unset($parameters['issuer']);
+        }
+        
+        return $parameters;
+    }
 }
