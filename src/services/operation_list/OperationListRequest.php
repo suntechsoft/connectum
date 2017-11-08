@@ -31,15 +31,15 @@ class OperationListRequest extends BaseGetRequest {
 
     /**
      * Set expands
-     * @param string $expand
+     * @param array $expands
      * @return $this
      */
-    public function setExpands($expand) {
-        if(!in_array($expand, Expands::getAllExpands())){
+    public function setExpands($expands) {
+        if(!empty(array_diff($expands, Expands::getAllExpands()))){
             throw new SdkException('Wrong expand. Use from constants');
         }
         
-        $this->expand = $expand;
+        $this->expand = implode(',', $expands);
         return $this;
     }
     

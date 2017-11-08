@@ -41,16 +41,16 @@ class OrderListRequest extends BaseGetRequest {
     }
 
     /**
-     * Set expand
+     * Set expands
      * @param string $expand
      * @return $this
      */
-    public function setExpand($expand) {
-        if(!in_array($expand, Expands::getAllExpands())){
+    public function setExpands($expands) {
+        if(!empty(array_diff($expands, Expands::getAllExpands()))){
             throw new SdkException('Wrong expand. Use from constants');
         }
         
-        $this->expand = $expand;
+        $this->expand = implode(',', $expands);
         return $this;
     }
     
