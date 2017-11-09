@@ -18,6 +18,20 @@ class OrderRebillRequest extends BasePostRequest {
     protected $location;
     /** @var CardData */
     protected $card;
+    /** @var string */
+    protected $merchant_order_id;
+    /** @var int */
+    protected $segment;
+    /** @var string */
+    protected $description;
+    /** @var array */
+    protected $custom_fields;
+    /** @var ClientData */
+    protected $client;
+    /** @var OptionsData */
+    protected $options;
+    /** @var DynamicDescriptorData */
+    protected $dynamic_descritor;
     
     /**
      * {@inheritdoc}
@@ -31,17 +45,80 @@ class OrderRebillRequest extends BasePostRequest {
      * @param string $currency
      * @param LocationData $location
      */
-    public function __construct($amount, $currency, LocationData $location) {
+    public function __construct($amount, $currency, CardData $card, LocationData $location) {
         $this->amount = (string)$amount;
+        $this->card = $card;
         $this->currency = $currency;
         $this->location = $location;
     }
+        
+    /**
+     * Set merchant order id
+     * @param string $id
+     * @return self
+     */
+    public function setOrder($id){
+        $this->merchant_order_id = $id;
+        return $this;
+    }
     
     /**
-     * Set card
-     * @param CardData $card
+     * Set segment
+     * @param int $segment
+     * @return self
      */
-    public function setCard(CardData $card){
-        $this->card = $card;
+    public function setSegment($segment){
+        $this->segment = $segment;
+        return $this;
+    }
+    
+    /**
+     * Set description
+     * @param string $description
+     * @return self
+     */
+    public function setDescription($description){
+        $this->description = $description;
+        return $this;
+    }
+    
+    /**
+     * Set custom fields
+     * @param array $fields
+     * @return self
+     */
+    public function setCustomFields($fields){
+        $this->custom_fields = $fields;
+        return $this;
+    }
+    
+    /**
+     * Set client
+     * @param ClientData $client
+     * @return self
+     */
+    public function setClient(ClientData $client){
+        $this->client = $client;
+        return $this;
+    }
+
+    /**
+     * Set options
+     * @param OptionsData $options
+     * @return self
+     */
+    public function setOptions(OptionsData $options){
+        $this->options = $options;
+        return $this;
+    }
+
+    /**
+     * Set Dynamic descriptor
+     * @param DynamicDescriptorData $dynamicDescriptor
+     * @return self
+     */
+    public function setDynamicDescriptor(DynamicDescriptorData $dynamicDescriptor){
+        $this->dynamic_descritor = $dynamicDescriptor;
+        return $this;
     }
 }
