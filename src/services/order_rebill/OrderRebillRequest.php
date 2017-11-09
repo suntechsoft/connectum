@@ -45,11 +45,20 @@ class OrderRebillRequest extends BasePostRequest {
      * @param string $currency
      * @param LocationData $location
      */
-    public function __construct($amount, $currency, CardData $card, LocationData $location) {
+    public function __construct($amount, $currency, LocationData $location) {
         $this->amount = (string)$amount;
-        $this->card = $card;
         $this->currency = $currency;
         $this->location = $location;
+    }
+    
+    /**
+     * Set cvv in card data
+     * @param CardData $card
+     * @return self
+     */
+    public function setCard(CardData $card){
+        $this->card = $card;
+        return $this;
     }
         
     /**
