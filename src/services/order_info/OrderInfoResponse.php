@@ -24,6 +24,8 @@ class OrderInfoResponse extends BaseResponse {
     public $id;
     public $merchant_order_id;
     public $pan;
+    public $status;
+    public $updated;
     
     /** @var CardData */
     public $card;
