@@ -126,4 +126,13 @@ class OrderAuthorizeRequest extends BasePostRequest {
         $this->dynamic_descritor = $dynamicDescriptor;
         return $this;
     }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getParameters() {
+        $parameters = parent::getParameters();
+        $parameters['extra_fielfs'] = $this->dynamic_descritor;
+        return $parameters;
+    }
 }
