@@ -11,6 +11,7 @@ class OperationData extends BaseDataObject {
     public $currency;
     public $iso_message;
     public $iso_response_code;
+    public $order_id;
     public $status;
     public $type;
     /** @var CashflowData */
