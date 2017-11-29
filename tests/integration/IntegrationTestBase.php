@@ -3,6 +3,7 @@
 namespace Platron\Connectum\tests\integration;
 
 use Platron\Connectum\tests\integration\MerchantSettings;
+use Platron\Connectum\data_objects\ConnectionSettingsData;
 
 class IntegrationTestBase extends \PHPUnit_Framework_TestCase {
     
@@ -23,17 +24,20 @@ class IntegrationTestBase extends \PHPUnit_Framework_TestCase {
     protected $certificatePath;
     /** @var string */
     protected $certificatePassword;
+    /** @var ConnectionSettingsData */
+    protected $connectionSettings;
     
     /** @var PsrLogAdapter */
     public $logger;
     
     public function __construct() {
+        $this->connectionSettings = new ConnectionSettingsData();
+        $this->connectionSettings->login = MerchantSettings::BASIC_LOGIN;
+        $this->connectionSettings->password = MerchantSettings::BASIC_PASSWORD;
+        $this->connectionSettings->certificatePath = __DIR__.'/certificate/'.MerchantSettings::CERTIFICATE_NAME;
+        $this->connectionSettings->certificatePassword = MerchantSettings::CERTIFICATE_PASSWORD;
+        $this->connectionSettings->setTestingMode();
         $this->logger = new PsrLogAdapter();
-        $this->testingUrl = MerchantSettings::TESTING_URL;
-        $this->login = MerchantSettings::BASIC_LOGIN;
-        $this->password = MerchantSettings::BASIC_PASSWORD;
-        $this->certificatePath = __DIR__.'/certificate/'.MerchantSettings::CERTIFICATE_NAME;
-        $this->certificatePassword = MerchantSettings::CERTIFICATE_PASSWORD;
         parent::__construct();
     }
 }

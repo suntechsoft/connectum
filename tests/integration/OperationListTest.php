@@ -9,7 +9,7 @@ use Platron\Connectum\services\operation_list\OperationListResponse;
 
 class OperationListTest extends IntegrationTestBase{
     public function testRequest(){
-        $client = (new GetClient($this->login, $this->password, $this->certificatePath, $this->certificatePassword))->setTest()->setLogger($this->logger);
+        $client = (new GetClient($this->connectionSettings))->setLogger($this->logger);
         $request = new OperationListRequest();
         $request->setStatus(OperationStatus::SUCCESS);
         

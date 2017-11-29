@@ -10,7 +10,7 @@ use Platron\Connectum\handbooks\OrderStatus;
 
 class OrderListRequestTest extends IntegrationTestBase {
     public function testRequest(){
-        $client = (new GetClient($this->login, $this->password, $this->certificatePath, $this->certificatePassword))->setTest()->setLogger($this->logger);
+        $client = (new GetClient($this->connectionSettings))->setLogger($this->logger);
         $request = new OrderListRequest();
         
         $card = new CardData();

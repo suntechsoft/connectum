@@ -10,7 +10,7 @@ use Platron\Connectum\services\order_authorize\OrderAuthorizeResponse;
 
 class OrderAuthorizeTest extends IntegrationTestBase {
     public function testRequest(){
-        $client = (new PostClient($this->login, $this->password, $this->certificatePath, $this->certificatePassword))->setTest()->setLogger($this->logger);
+        $client = (new PostClient($this->connectionSettings))->setLogger($this->logger);
         
         $card = new CardData();
         $card->holder = 'test test';

@@ -8,7 +8,7 @@ use Platron\Connectum\services\order_create\OrderCreateResponse;
 
 class OrderCreateTest extends IntegrationTestBase {
     public function testRequest(){
-        $client = (new PostClient($this->login, $this->password, $this->certificatePath, $this->certificatePassword))->setTest()->setLogger($this->logger);
+        $client = (new PostClient($this->connectionSettings))->setLogger($this->logger);
         $request = new OrderCreateRequest(10, 'RUB');
         
         $this->assertTrue((new OrderCreateResponse($client->sendRequest($request)))->isValid());

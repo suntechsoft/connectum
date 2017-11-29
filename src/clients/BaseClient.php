@@ -5,6 +5,7 @@ namespace Platron\Connectum\clients;
 use Platron\Connectum\services\BaseRequest;
 use stdClass;
 use Psr\Log\LoggerInterface;
+use Platron\Connectum\data_objects\ConnectionSettingsData;
 
 abstract class BaseClient {
     
@@ -17,21 +18,8 @@ abstract class BaseClient {
     protected $errorDescription;
     /** @var int */
     protected $errorCode;
-    
-    /** @var string */
-    protected $login;
-    /** @var string */
-    protected $password;
-    /** @var string */
-    protected $baseUrl = 'https://api.connectum.eu';
-    /** @var LoggerInterface */
-    protected $logger;
-    /** @var int */
-    protected $connectionTimeout;
-    /** @var string */
-    protected $certificatePath;
-    /** @var string */
-    protected $certificatePassword;
+    /** @var ConnectionSettingsData */
+    protected $connectionSettings;
     
     /**
      * Send request
@@ -41,16 +29,10 @@ abstract class BaseClient {
     abstract public function sendRequest(BaseRequest $service);
     
     /**
-     * @param string $login
-     * @param string $password
-     * @param string $certificatePath PEM certificate
-     * @param string $certificatePassword
+     * @param ConnectionSettingsData $connectionSettings
      */
-    public function __construct($login, $password, $certificatePath, $certificatePassword) {
-        $this->login = $login;
-        $this->password = $password;
-        $this->certificatePath = $certificatePath;
-        $this->certificatePassword = $certificatePassword;
+    public function __construct(ConnectionSettingsData $connectionSettings) {
+        $this->connectionSettings = $connectionSettings;
     }
     
     /**
@@ -71,17 +53,7 @@ abstract class BaseClient {
         $this->baseUrl = 'https://api.sandbox.connectum.eu';
         return $this;
     }
-    
-    /**
-     * Set connection timeout
-     * @param type $connectionTimeout
-     * @return self
-     */
-    public function setConnectionTimeout($connectionTimeout){
-        $this->connectionTimeout = $connectionTimeout;
-        return $this;
-    }
-    
+
     /**
      * Set log
      * @param LoggerInterface $logger
