@@ -41,11 +41,13 @@ class OrderRebillRequest extends BasePostRequest {
     }
 
     /**
+     * @param int $id
      * @param float $amount
      * @param string $currency
      * @param LocationData $location
      */
-    public function __construct($amount, $currency, LocationData $location) {
+    public function __construct($id, $amount, $currency, LocationData $location) {
+        $this->id = $id;
         $this->amount = (string)$amount;
         $this->currency = $currency;
         $this->location = $location;
