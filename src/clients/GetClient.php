@@ -29,7 +29,7 @@ class GetClient extends BaseClient {
         curl_setopt($curl, CURLOPT_SSLCERT, $this->connectionSettings->certificatePath);
         curl_setopt($curl, CURLOPT_SSLCERTPASSWD, $this->connectionSettings->certificatePassword);
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
-        curl_setopt($curl,CURLOPT_USERPWD, $this->connectionSettings->login . ":" . $this->connectionSettings->password);
+        curl_setopt($curl, CURLOPT_USERPWD, $this->connectionSettings->login . ":" . $this->connectionSettings->password);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->getHeaders());
 
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

@@ -8,7 +8,7 @@ use Psr\Log\LoggerInterface;
 use Platron\Connectum\data_objects\ConnectionSettingsData;
 
 abstract class BaseClient {
-    
+
     const OK_HTTP_CODE = 200;
     const REDIRECT_HTTP_CODE = 201;
     
@@ -62,5 +62,18 @@ abstract class BaseClient {
     public function setLogger(LoggerInterface $logger){
         $this->logger = $logger;
         return $this;
+    }
+
+    /**
+     * Замаскировать данные
+     * @param array $paramsToMask
+     * @return array
+     */
+    protected function getMaskedParams($paramsToMask){
+        array_walk_recursive($paramsToMask, function(&$value, &$key) {
+            if(in_array($key, array('pan', 'cvv', 'expiration_month', 'expiration_year'))){
+                $value = str_repeat('*', strlen($value));
+            }
+        });
     }
 }

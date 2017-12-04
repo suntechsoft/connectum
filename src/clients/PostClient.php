@@ -26,7 +26,7 @@ class PostClient extends BaseClient {
         curl_setopt($curl, CURLOPT_SSLCERT, $this->connectionSettings->certificatePath);
         curl_setopt($curl, CURLOPT_SSLCERTPASSWD, $this->connectionSettings->certificatePassword);
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
-        curl_setopt($curl,CURLOPT_USERPWD, $this->connectionSettings->login . ":" . $this->connectionSettings->password);
+        curl_setopt($curl, CURLOPT_USERPWD, $this->connectionSettings->login . ":" . $this->connectionSettings->password);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->getHeaders());
         
         if(!empty($requestParameters)){
@@ -37,7 +37,7 @@ class PostClient extends BaseClient {
 		$response = curl_exec($curl);
         
         if($this->logger){
-            $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl.' params '. json_encode($requestParameters));
+            $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl.' params '. json_encode($this->getMaskedParams($requestParameters)));
             $this->logger->log(self::LOG_LEVEL, 'Response '.$response);
         }
 		
