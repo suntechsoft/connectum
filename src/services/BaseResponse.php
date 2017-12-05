@@ -7,10 +7,10 @@ use stdClass;
 abstract class BaseResponse {
     
     /** @var int */
-    public $failure_type;
+    protected $failure_type;
     
     /** @var string */
-    public $failure_message;
+    protected $failure_message;
     
     public function __construct(stdClass $response) {
         foreach (get_object_vars($this) as $name => $value) {
@@ -35,10 +35,18 @@ abstract class BaseResponse {
     }
     
     /**
-     * Получить описание ошибки из ответа
+     * Получить тип ошибки
      * @return string
      */
-    public function getError(){
-        return $this->failure_message.' type '.$this->failure_type;
+    public function getErrorType(){
+        return $this->failure_type;
+    }
+    
+    /**
+     * Получить описание ошибки
+     * @return string
+     */
+    public function getErrorMessage(){
+        return $this->failure_message;
     }
 }
