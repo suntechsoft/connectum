@@ -8,7 +8,7 @@ use Platron\Connectum\data_objects\ClientData;
 use Platron\Connectum\data_objects\IssuerData;
 use Platron\Connectum\data_objects\LocationData;
 use Platron\Connectum\data_objects\Secure3dData;
-use Platron\Connectum\services\operation_list\OperationListResponse;
+use Platron\Connectum\data_objects\OperationData;
 use stdClass;
 
 class OrderInfoResponse extends BaseResponse {
@@ -37,7 +37,7 @@ class OrderInfoResponse extends BaseResponse {
     public $location;
     /** @var Secure3dData */
     public $secure3d;
-    /** @var OperationListResponse[] */
+    /** @var OperationData[] */
     public $operations;
     
     /**
@@ -45,5 +45,8 @@ class OrderInfoResponse extends BaseResponse {
      */
     public function __construct(stdClass $response) {
         parent::__construct($response);
+        if(!empty($response->orders[0])){
+            parent::__construct($response->orders[0]);
+        }
     }
 }
