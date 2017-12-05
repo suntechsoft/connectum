@@ -7,5 +7,12 @@ use Platron\Connectum\services\order_info\OrderInfoResponse;
 
 class OrderChargeResponse extends BaseResponse {
     /** @var OrderInfoResponse */
-    public $orders;
+    public $order;
+    
+    public function __construct(\stdClass $response) {
+        parent::__construct($response);
+        if(!empty($response->orders[0])){
+            $this->order = $response->orders[0];
+        }
+    }
 }

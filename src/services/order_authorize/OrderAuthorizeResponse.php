@@ -8,8 +8,15 @@ use Platron\Connectum\data_objects\Form3dData;
 
 class OrderAuthorizeResponse extends BaseResponse {
     /** @var OrderInfoResponse */
-    public $orders;
+    public $order;
     /** @var Form3dData */
     public $form3d;
     public $form3d_html;
+    
+    public function __construct(\stdClass $response) {
+        parent::__construct($response);
+        if(!empty($response->orders[0])){
+            $this->order = $response->orders[0];
+        }
+    }
 }
