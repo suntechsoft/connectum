@@ -7,7 +7,7 @@ use Platron\Connectum\services\BasePutRequest;
 class OrderChargeRequest extends BasePutRequest {
     
     /** @var int */
-    protected $id;
+    private $id;
     /** @var string */
     protected $amount;
     

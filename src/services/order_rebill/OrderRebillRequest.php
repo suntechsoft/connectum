@@ -9,7 +9,7 @@ use Platron\Connectum\services\BasePostRequest;
 class OrderRebillRequest extends BasePostRequest {
     
     /** @var int */
-    protected $id;
+    private $id;
     /** @var string $amount */
     protected $amount;
     /** @var string */

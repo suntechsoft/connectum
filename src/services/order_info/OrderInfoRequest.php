@@ -9,7 +9,7 @@ use Platron\Connectum\services\BaseGetRequest;
 class OrderInfoRequest extends BaseGetRequest {
     
     /** @var int */
-    protected $id;
+    private $id;
     /** @var string */
     protected $expand;
     

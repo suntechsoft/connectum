@@ -7,7 +7,7 @@ use Platron\Connectum\services\BasePutRequest;
 class OrderReverseRequest extends BasePutRequest {
     
     /** @var int */
-    protected $id;
+    private $id;
     
     /**
      * {@inheritdoc}

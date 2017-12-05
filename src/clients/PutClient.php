@@ -28,11 +28,12 @@ class PutClient extends BaseClient {
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
         curl_setopt($curl, CURLOPT_USERPWD, $this->connectionSettings->login . ":" . $this->connectionSettings->password);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->getHeaders());
+        curl_setopt($curl, CURLOPT_PUT, 1);
         
         if(!empty($requestParameters)){
-            curl_setopt($curl, CURLOPT_PUT, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($requestParameters));
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $requestParameters);
         }
+        
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($curl);
         
