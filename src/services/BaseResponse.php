@@ -26,7 +26,7 @@ abstract class BaseResponse {
      * @return boolean
      */
     public function isValid(){
-        if(!empty($this->errorCode)){
+        if(!empty($this->failure_message)){
             return false;
         }
         else {
