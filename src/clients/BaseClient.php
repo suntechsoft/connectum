@@ -20,6 +20,8 @@ abstract class BaseClient {
     protected $errorCode;
     /** @var ConnectionSettingsData */
     protected $connectionSettings;
+    /** @var LoggerInterface */
+    protected $logger;
     
     /**
      * Send request
