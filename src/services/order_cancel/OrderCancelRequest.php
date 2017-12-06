@@ -24,7 +24,7 @@ class OrderCancelRequest extends BasePostRequest {
      */
     public function __construct($id, $amount) {
         $this->id = $id;
-        $this->amount = $amount;
+        $this->amount = (string) round($amount, 2);
     }
 
 }
