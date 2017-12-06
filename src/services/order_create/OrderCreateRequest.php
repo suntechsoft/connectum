@@ -41,7 +41,7 @@ class OrderCreateRequest extends BasePostRequest {
      * @param string $currency
      */
     public function __construct($amount, $currency) {
-        $this->amount = (string)$amount;
+        $this->amount = (string) round($amount, 2);
         $this->currency = $currency;
     }
     

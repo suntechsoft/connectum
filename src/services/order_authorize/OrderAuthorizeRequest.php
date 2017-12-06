@@ -50,7 +50,7 @@ class OrderAuthorizeRequest extends BasePostRequest {
      * @param LocationData $location
      */
     public function __construct($amount, $currency, $pan, CardData $card, LocationData $location) {
-        $this->amount = (string)$amount;
+        $this->amount = (string) round($amount, 2);
         $this->currency = $currency;
         $this->pan = $pan;
         $this->card = $card;

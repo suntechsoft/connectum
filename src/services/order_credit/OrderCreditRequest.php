@@ -36,7 +36,7 @@ class OrderCreditRequest extends BasePostRequest {
      */
     public function __construct($id, $amount, $currency, LocationData $location) {
         $this->id = $id;
-        $this->amount = (string)$amount;
+        $this->amount = (string) round($amount, 2);
         $this->currency = $currency;
         $this->location = $location;
     }
