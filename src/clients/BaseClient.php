@@ -9,8 +9,10 @@ use Platron\Connectum\data_objects\ConnectionSettingsData;
 
 abstract class BaseClient {
 
-    const OK_HTTP_CODE = 200;
-    const REDIRECT_HTTP_CODE = 201;
+    const 
+        OK_HTTP_CODE = 200,
+        REDIRECT_HTTP_CODE = 201,
+        JSON_DECLINE_HTTP_CODE = 402;
     
     const LOG_LEVEL = 0;
     

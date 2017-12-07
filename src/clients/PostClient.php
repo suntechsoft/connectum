@@ -46,7 +46,7 @@ class PostClient extends BaseClient {
 		}
 
         $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        if ($httpCode !== self::OK_HTTP_CODE && $httpCode !== self::REDIRECT_HTTP_CODE) {
+        if (!in_array($httpCode, array(self::OK_HTTP_CODE, self::REDIRECT_HTTP_CODE, self::JSON_DECLINE_HTTP_CODE))) {
             throw new SdkException('Service error. Wrong http code '.$httpCode);
         }
         
