@@ -26,6 +26,7 @@ class OrderInfoResponse extends BaseResponse {
     public $pan;
     public $status;
     public $updated;
+    public $form3d_html;
     
     /** @var CardData */
     public $card;
@@ -39,6 +40,8 @@ class OrderInfoResponse extends BaseResponse {
     public $secure3d;
     /** @var OperationData[] */
     public $operations;
+    /** @var Form3dData */
+    public $form3d;
     
     /**
      * {@inheritdoc}
