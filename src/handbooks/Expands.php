@@ -9,7 +9,7 @@ class Expands {
         LOCATION = 'location',
         CUSTOM_FIELDS = 'issuer',
         SECURE3D = 'sucure3d',
-        OPERATIONS_CASHFLOW = 'operations.cashflow';
+        OPERATIONS_CASHFLOW = 'cashflow';
     
     public static function getAllExpands(){
         return array(
