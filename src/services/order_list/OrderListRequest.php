@@ -144,25 +144,24 @@ class OrderListRequest extends BaseGetRequest {
      */
     public function getParameters() {
         $parameters = parent::getParameters();
-        $parameters['card.type'] = $this->card->type;
-        $parameters['card.subtype'] = $this->card->subtype;
-        $parameters['location.ip'] = $this->location->ip;
-        $parameters['client.name'] = $this->client->name;
-        $parameters['client.email'] = $this->client->email;
-        $parameters['issuer.country'] = $this->issuer->country;
-        $parameters['issuer.bin'] = $this->issuer->bin;
-        $parameters['issuer.title'] = $this->issuer->title;
-        
         if($this->card){
+            $parameters['card.type'] = $this->card->type;
+            $parameters['card.subtype'] = $this->card->subtype;
             unset($parameters['card']);
         }
         if($this->location){
+            $parameters['location.ip'] = $this->location->ip;
             unset($parameters['location']);
         }
         if($this->client){
+            $parameters['client.name'] = $this->client->name;
+            $parameters['client.email'] = $this->client->email;
             unset($parameters['client']);
         }
         if($this->issuer){
+            $parameters['issuer.country'] = $this->issuer->country;
+            $parameters['issuer.bin'] = $this->issuer->bin;
+            $parameters['issuer.title'] = $this->issuer->title;
             unset($parameters['issuer']);
         }
         

@@ -6,7 +6,8 @@ class ConnectionSettingsData extends BaseDataObject {
     public $login;
     public $password;
     public $certificatePath;
-    public $certificatePassword;
+    public $privateKeyPath;
+    public $privateKeyPassword;
     public $connectionTimeout = 30;
     protected $baseUrl = 'https://api.connectum.eu';
     

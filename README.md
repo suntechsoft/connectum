@@ -1,9 +1,13 @@
 Platron Atol SDK
 ===============
-## Установка
-
-Install
+## Install
 <pre><code>composer require platron/connectum-sdk</pre></code>
+
+To use SDK you need to generate pem certificate and private key. You could use this command
+```
+openssl pkcs12 -in login.p12 -out private.key -nocerts -nodes
+openssl pkcs12 -in login.p12 -out certificate.cer -nokeys
+```
 
 ## Start tests
 ```

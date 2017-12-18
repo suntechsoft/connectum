@@ -24,7 +24,8 @@ class PutClient extends BaseClient {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectionSettings->connectionTimeout);
         curl_setopt($curl, CURLOPT_SSLCERT, $this->connectionSettings->certificatePath);
-        curl_setopt($curl, CURLOPT_SSLCERTPASSWD, $this->connectionSettings->certificatePassword);
+        curl_setopt($curl, CURLOPT_SSLKEY, $this->connectionSettings->privateKeyPath);
+        curl_setopt($curl, CURLOPT_SSLKEYPASSWD, $this->connectionSettings->privateKeyPassword);
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
         curl_setopt($curl, CURLOPT_USERPWD, $this->connectionSettings->login . ":" . $this->connectionSettings->password);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->getHeaders());

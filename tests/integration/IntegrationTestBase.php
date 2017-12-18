@@ -35,7 +35,8 @@ class IntegrationTestBase extends \PHPUnit_Framework_TestCase {
         $this->connectionSettings->login = MerchantSettings::BASIC_LOGIN;
         $this->connectionSettings->password = MerchantSettings::BASIC_PASSWORD;
         $this->connectionSettings->certificatePath = __DIR__.'/certificate/'.MerchantSettings::CERTIFICATE_NAME;
-        $this->connectionSettings->certificatePassword = MerchantSettings::CERTIFICATE_PASSWORD;
+        $this->connectionSettings->privateKeyPath = __DIR__.'/certificate/'.MerchantSettings::PRIVATE_KEY_NAME;
+        $this->connectionSettings->privateKeyPassword = MerchantSettings::PRIVATE_KEY_PASSWORD;
         $this->connectionSettings->setTestingMode();
         $this->logger = new PsrLogAdapter();
         parent::__construct();
