@@ -27,6 +27,7 @@ class OrderInfoResponse extends BaseResponse {
     public $status;
     public $updated;
     public $form3d_html;
+    public $custom_fields;
     
     /** @var CardData */
     public $card;
