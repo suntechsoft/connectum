@@ -6,6 +6,7 @@ use Platron\Connectum\services\BaseRequest;
 use stdClass;
 use Psr\Log\LoggerInterface;
 use Platron\Connectum\data_objects\ConnectionSettingsData;
+use Psr\Log\LogLevel;
 
 abstract class BaseClient {
 
@@ -14,7 +15,7 @@ abstract class BaseClient {
         REDIRECT_HTTP_CODE = 201,
         JSON_DECLINE_HTTP_CODE = 402;
     
-    const LOG_LEVEL = 0;
+    const LOG_LEVEL = LogLevel::INFO;
     
     /** @var string */
     protected $errorDescription;
