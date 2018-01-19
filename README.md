@@ -1,4 +1,4 @@
-Platron Atol SDK
+Platron Connectum SDK
 ===============
 ## Install
 <pre><code>composer require platron/connectum-sdk</pre></code>
