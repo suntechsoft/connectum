@@ -12,7 +12,7 @@ class OrderReverseResponse extends BaseResponse {
     public function __construct(\stdClass $response) {
         parent::__construct($response);
         if(!empty($response->orders[0])){
-            $this->order = $response->orders[0];
+            $this->order = new OrderInfoResponse($response);
         }
     }
 }
