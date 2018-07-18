@@ -33,17 +33,17 @@ class GetClient extends BaseClient {
         curl_setopt($curl, CURLOPT_USERPWD, $this->connectionSettings->login . ":" . $this->connectionSettings->password);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->getHeaders());
 
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		$response = curl_exec($curl);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	$response = curl_exec($curl);
         
         if($this->logger){
-            $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl);
-            $this->logger->log(self::LOG_LEVEL, 'Response '.$response);
+            $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl, ['from' => get_class($service)]);
+            $this->logger->log(self::LOG_LEVEL, 'Response '.$response, ['from' => get_class($service)]);
         }
 		
-		if(curl_errno($curl)){
-			throw new SdkException(curl_error($curl), curl_errno($curl));
-		}
+	if(curl_errno($curl)){
+		throw new SdkException(curl_error($curl), curl_errno($curl));
+	}
         
         if (curl_getinfo($curl, CURLINFO_HTTP_CODE) !== self::OK_HTTP_CODE) {
             throw new SdkException('Service error. Wrong http code '.curl_getinfo($curl, CURLINFO_HTTP_CODE));
@@ -54,7 +54,7 @@ class GetClient extends BaseClient {
             throw new SdkException('Service error. Empty response or not json response');
         }
 		
-		return $decodedResponse;
+	return $decodedResponse;
     }
 
 }
