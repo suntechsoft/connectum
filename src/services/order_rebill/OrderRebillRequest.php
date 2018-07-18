@@ -138,7 +138,7 @@ class OrderRebillRequest extends BasePostRequest {
      */
     public function getParameters() {
         $parameters = parent::getParameters();
-        $parameters['extra_fielfs'] = $this->dynamic_descritor;
+        $parameters['extra_fields'] = $this->dynamic_descritor;
         return $parameters;
     }
 }
