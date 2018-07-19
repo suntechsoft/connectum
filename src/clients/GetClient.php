@@ -42,11 +42,11 @@ class GetClient extends BaseClient {
             $this->logger->log(self::LOG_LEVEL, 'Response '.$response);
         }
 		
-		if(curl_errno($curl)){
-			throw new SdkException(curl_error($curl), curl_errno($curl));
-		}
+	if(curl_errno($curl)){
+		throw new SdkException(curl_error($curl), curl_errno($curl));
+	}
 
-		$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+	$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         if ($httpCode !== HttpCodes::CODE_200) {
             throw new SdkException('Service error. Wrong http code '.$httpCode, $httpCode);
         }
