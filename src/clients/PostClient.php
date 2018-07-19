@@ -47,6 +47,7 @@ class PostClient extends BaseClient {
 			throw new SdkException(curl_error($curl), curl_errno($curl));
 		}
 
+		$this->httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		$decodedResponse = json_decode($response);
 		if(empty($decodedResponse)){
 			throw new SdkException('Service error. Empty response or not json response');

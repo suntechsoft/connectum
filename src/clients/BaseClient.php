@@ -20,6 +20,8 @@ abstract class BaseClient {
     protected $connectionSettings;
     /** @var LoggerInterface */
     protected $logger;
+	/** @var int */
+    protected $httpCode;
     
     /**
      * Send request
@@ -44,6 +46,14 @@ abstract class BaseClient {
             'Content-Type: application/json',
         );
     }
+
+	/**
+	 * Get http code
+	 * @return int
+	 */
+    public function getHttpCode(){
+    	return $this->httpCode;
+	}
     
     /**
      * Set test mode
