@@ -2,6 +2,7 @@
 
 namespace Platron\Connectum\clients;
 
+use Platron\Connectum\handbooks\HttpCodes;
 use Platron\Connectum\SdkException;
 use Platron\Connectum\services\BasePutRequest;
 use Platron\Connectum\services\BaseRequest;
@@ -47,8 +48,9 @@ class PutClient extends BaseClient {
 		throw new SdkException(curl_error($curl), curl_errno($curl));
 	}
 
-        if (curl_getinfo($curl, CURLINFO_HTTP_CODE) !== self::OK_HTTP_CODE) {
-            throw new SdkException('Service error. Wrong http code '.curl_getinfo($curl, CURLINFO_HTTP_CODE));
+		$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($httpCode !== HttpCodes::CODE_200) {
+            throw new SdkException('Service error. Wrong http code '.$httpCode, $httpCode);
         }
         
         $decodedResponse = json_decode($response);

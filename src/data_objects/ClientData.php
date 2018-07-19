@@ -3,6 +3,7 @@
 namespace Platron\Connectum\data_objects;
 
 class ClientData extends BaseDataObject {
+	public $login;
     public $address;
     public $city;
     public $country;
