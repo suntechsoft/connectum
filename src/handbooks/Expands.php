@@ -20,7 +20,7 @@ class Expands {
             self::CUSTOM_FIELDS,
             self::ISSUER,
             self::SECURE3D,
-            self::OPERATIONS_CASHFLOW,
+            self::CASHFLOW,
         );
     }
 }
