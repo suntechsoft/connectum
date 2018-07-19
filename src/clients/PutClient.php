@@ -36,29 +36,24 @@ class PutClient extends BaseClient {
             curl_setopt($curl, CURLOPT_POSTFIELDS, $requestParameters);
         }
         
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	$response = curl_exec($curl);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($curl);
         
         if($this->logger){
             $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl.' params '. json_encode($this->getMaskedParams($requestParameters)), ['from' => $service->getRequestUrl()]);
             $this->logger->log(self::LOG_LEVEL, 'Response '.$response, ['from' => $service->getRequestUrl()]);
         }
 		
-	if(curl_errno($curl)){
-		throw new SdkException(curl_error($curl), curl_errno($curl));
-	}
+		if(curl_errno($curl)){
+			throw new SdkException(curl_error($curl), curl_errno($curl));
+		}
 
-		$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        if ($httpCode !== HttpCodes::CODE_200) {
-            throw new SdkException('Service error. Wrong http code '.$httpCode, $httpCode);
-        }
-        
         $decodedResponse = json_decode($response);
         if(empty($decodedResponse)){
             throw new SdkException('Service error. Empty response or not json response');
         }
 		
-	return $decodedResponse;
+		return $decodedResponse;
     }
 
 }

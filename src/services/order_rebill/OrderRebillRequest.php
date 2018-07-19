@@ -4,6 +4,9 @@ namespace Platron\Connectum\services\order_rebill;
 
 use Platron\Connectum\data_objects\CardData;
 use Platron\Connectum\data_objects\LocationData;
+use Platron\Connectum\data_objects\ClientData;
+use Platron\Connectum\data_objects\OptionsData;
+use Platron\Connectum\data_objects\DynamicDescriptorData;
 use Platron\Connectum\services\BasePostRequest;
 
 class OrderRebillRequest extends BasePostRequest {

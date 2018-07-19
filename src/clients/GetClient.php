@@ -46,11 +46,6 @@ class GetClient extends BaseClient {
 		throw new SdkException(curl_error($curl), curl_errno($curl));
 	}
 
-	$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        if ($httpCode !== HttpCodes::CODE_200) {
-            throw new SdkException('Service error. Wrong http code '.$httpCode, $httpCode);
-        }
-
         $decodedResponse = json_decode($response);
         if(empty($decodedResponse)){
             throw new SdkException('Service error. Empty response or not json response');
