@@ -38,8 +38,8 @@ class GetClient extends BaseClient {
 		$response = curl_exec($curl);
         
         if($this->logger){
-            $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl);
-            $this->logger->log(self::LOG_LEVEL, 'Response '.$response);
+            $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl, ['from' => $service->getRequestUrl()]);
+            $this->logger->log(self::LOG_LEVEL, 'Response '.$response, ['from' => $service->getRequestUrl()]);
         }
 		
 		if(curl_errno($curl)){
