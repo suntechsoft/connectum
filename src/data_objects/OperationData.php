@@ -2,8 +2,6 @@
 
 namespace Platron\Connectum\data_objects;
 
-use Platron\Connectum\data_objects\CashflowData;
-
 class OperationData extends BaseDataObject {
     public $amount;
     public $auth_code;
