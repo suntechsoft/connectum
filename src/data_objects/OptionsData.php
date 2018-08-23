@@ -2,7 +2,7 @@
 
 namespace Platron\Connectum\data_objects;
 
-class OptionsData {
+class OptionsData extends BaseDataObject {
     public $expiration_timeout;
     public $force3d;
     public $auto_charge;
