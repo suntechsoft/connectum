@@ -120,7 +120,7 @@ class OrderCreateRequest extends BasePostRequest {
      */
     public function getParameters() {
         $parameters = parent::getParameters();
-        if($this->dynamic_descritor){
+		if(!empty($this->dynamic_descritor)){
 			$parameters['extra_fields'] = $this->dynamic_descritor;
 		};
         return $parameters;
