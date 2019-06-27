@@ -10,7 +10,7 @@ class OrderCreateResponse extends BaseResponse
 
     const REDIRECT_URL = 'https://checkout.cnnn.eu/pay/%s';
 
-    const REDIRECT_URL_SANDBOX = 'https://checkout.sandbox.cnnn.eu/pay/%s';
+    const REDIRECT_URL_SANDBOX = 'https://checkout.sandbox.connectum.eu/pay/%s';
 
     /** @var OrderInfoResponse */
     public $order;
