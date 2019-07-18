@@ -10,7 +10,7 @@ abstract class BaseDataObject {
 	public function getParameters() {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
-			if ($value) {
+            if ($value || $value === 0) {
                 if($value instanceof BaseDataObject){
                     $filledvars[$name] = $value->getParameters();
                 } else {
